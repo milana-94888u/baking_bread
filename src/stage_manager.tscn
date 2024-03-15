@@ -1,0 +1,15 @@
+[gd_scene load_steps=10 format=3 uid="uid://bl71vey1mggjm"]
+
+[ext_resource type="Script" path="res://src/stage_manager.gd" id="1_d2esg"]
+[ext_resource type="PackedScene" uid="uid://c77go5bf1c32r" path="res://src/stages/ingridient_preparation.tscn" id="2_dad38"]
+[ext_resource type="PackedScene" uid="uid://b7pg0eh3yc5i7" path="res://src/stages/kneading.tscn" id="3_28s32"]
+[ext_resource type="PackedScene" uid="uid://csbveljgh6ac2" path="res://src/stages/cooling.tscn" id="4_mu6a1"]
+[ext_resource type="PackedScene" uid="uid://i7pnn10ka526" path="res://src/stages/making_soft.tscn" id="5_1injd"]
+[ext_resource type="PackedScene" uid="uid://dssa02mu473qf" path="res://src/stages/formation.tscn" id="6_8dyyc"]
+[ext_resource type="PackedScene" uid="uid://c1hchgwr2jh7d" path="res://src/stages/inserting_in_oven.tscn" id="7_en0fx"]
+[ext_resource type="PackedScene" uid="uid://dmp586plgj1ro" path="res://src/stages/baking.tscn" id="8_lwehw"]
+[ext_resource type="PackedScene" uid="uid://vob15tc4vo42" path="res://src/stages/picking_out_of_oven.tscn" id="9_4cvmm"]
+
+[node name="StageManager" type="Node"]
+script = ExtResource("1_d2esg")
+stages = Array[PackedScene]([ExtResource("2_dad38"), ExtResource("3_28s32"), ExtResource("4_mu6a1"), ExtResource("5_1injd"), ExtResource("6_8dyyc"), ExtResource("7_en0fx"), ExtResource("8_lwehw"), ExtResource("9_4cvmm")])

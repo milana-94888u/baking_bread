@@ -15,9 +15,9 @@ var progress := 0.0
 func increase_progress() -> void:
 	progress += 0.1
 	ingredients.position.y = lerpf(0, 100, progress)
-	dough_out.position.y = lerpf(800, 600, progress)
+	dough_out.position.y = lerpf(800, 680, progress)
 	if is_equal_approx(progress, 1):
-		remove_child(whisk)
+		StageManager.switch_to_next_stage()
 
 
 func _on_left_area_body_entered(body: Node2D) -> void:

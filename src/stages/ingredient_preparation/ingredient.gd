@@ -21,7 +21,7 @@ func make_drag_preview() -> TextureRect:
 	t.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	t.custom_minimum_size = size
 	var c := Control.new()
-	c.add_child(t)
+	c.add_child.call_deferred(t)
 	t.position = -0.5 * t.texture.get_size()
 	return c
 

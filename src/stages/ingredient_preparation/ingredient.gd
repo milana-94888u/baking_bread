@@ -2,9 +2,13 @@ extends TextureButton
 class_name Ingredient
 
 
-@export var result_ingredient: CanvasItem
+@export var result_ingredient: NodePath
 
 var waiting_flag := false
+
+
+func _ready() -> void:
+	print(result_ingredient)
 
 
 func _get_drag_data(_at_position: Vector2) -> Variant:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://i7pnn10ka526"]
 
-[ext_resource type="Script" path="res://src/stages/making_soft.gd" id="1_3l8r8"]
+[ext_resource type="Script" path="res://src/stages/making_soft/making_soft.gd" id="1_3l8r8"]
 
 [node name="MakingSoft" type="Node2D"]
 script = ExtResource("1_3l8r8")

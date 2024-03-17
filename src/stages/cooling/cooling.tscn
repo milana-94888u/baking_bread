@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://csbveljgh6ac2"]
+[gd_scene load_steps=18 format=3 uid="uid://csbveljgh6ac2"]
 
 [ext_resource type="Script" path="res://src/stages/cooling/cooling.gd" id="1_wyo8h"]
 [ext_resource type="Texture2D" uid="uid://rojiuivwb6q1" path="res://assets/sprites/background kitchen.png" id="2_3bjf2"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cvhokds14v4mj" path="res://assets/sprites/towel grabber.png" id="8_cqmb6"]
 [ext_resource type="Texture2D" uid="uid://b30exbd53euf0" path="res://assets/sprites/dough out.png" id="9_6ajsq"]
 [ext_resource type="Texture2D" uid="uid://cimypcc4anqmt" path="res://assets/sprites/dough with towel.png" id="9_q4pfl"]
+[ext_resource type="AudioStream" uid="uid://c4bwbme75x17c" path="res://assets/sounds/cooling/cloth_up.wav" id="10_qg444"]
+[ext_resource type="AudioStream" uid="uid://r0bf2w1r4dtj" path="res://assets/sounds/cooling/cloth_down.wav" id="11_4412s"]
 [ext_resource type="Texture2D" uid="uid://rlifjl4bprwt" path="res://assets/sprites/bowl front.png" id="12_iixgs"]
 
 [sub_resource type="BitMap" id="BitMap_nyajw"]
@@ -33,16 +35,26 @@ data = {
 "size": Vector2i(1000, 1000)
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g3yui"]
+playback_mode = 2
+streams_count = 2
+stream_0/stream = ExtResource("10_qg444")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("11_4412s")
+stream_1/weight = 1.0
+
 [node name="Cooling" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_wyo8h")
 
 [node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
 texture = ExtResource("2_3bjf2")
 metadata/_edit_lock_ = true
 
 [node name="BowlBack" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 460.0
 offset_top = 40.0
 offset_right = 460.0
@@ -57,6 +69,7 @@ position = Vector2(950, 680)
 texture = ExtResource("9_6ajsq")
 
 [node name="BackgroundBottom" type="TextureRect" parent="."]
+layout_mode = 0
 offset_top = 572.0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -64,6 +77,7 @@ texture = SubResource("AtlasTexture_7vppd")
 metadata/_edit_lock_ = true
 
 [node name="BowlFront" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 460.0
 offset_top = 40.0
 offset_right = 460.0
@@ -73,6 +87,7 @@ texture_click_mask = SubResource("BitMap_idd51")
 metadata/_edit_lock_ = true
 
 [node name="Towel" type="TextureButton" parent="." node_paths=PackedStringArray("result_sprite")]
+layout_mode = 0
 offset_left = 1026.0
 offset_top = 190.0
 offset_right = 2026.0
@@ -82,6 +97,9 @@ texture_click_mask = SubResource("BitMap_1xwu1")
 script = ExtResource("7_a1nvk")
 result_sprite = NodePath("../DoughWithTowel")
 grabbed_texture = ExtResource("8_cqmb6")
+
+[node name="Touch" type="AudioStreamPlayer" parent="Towel"]
+stream = SubResource("AudioStreamRandomizer_g3yui")
 
 [node name="DoughWithTowel" type="Sprite2D" parent="."]
 visible = false

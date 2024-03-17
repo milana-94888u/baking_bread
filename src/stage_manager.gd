@@ -20,7 +20,9 @@ func _input(event: InputEvent) -> void:
 
 
 func switch_to_next_stage() -> void:
-	print("switching")
+	print("switching stage from %s [%d] to %s [%d]"
+	 % [ stages[current_stage].resource_path, current_stage, 
+	stages[current_stage+1].resource_path, current_stage+1 ] )
 	current_stage += 1
 	if current_stage < stages.size():
 		await get_tree().process_frame

@@ -23,10 +23,12 @@ func increase_progress() -> void:
 func _on_left_area_body_entered(body: Node2D) -> void:
 	if body is Whisk and last_entered != LEFT:
 		last_entered = LEFT
+		$Sound.playing = true
 		increase_progress()
 
 
 func _on_right_area_body_entered(body: Node2D) -> void:
 	if body is Whisk and last_entered != RIGHT:
 		last_entered = RIGHT
+		$Sound.playing = true
 		increase_progress()

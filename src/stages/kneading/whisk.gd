@@ -16,5 +16,5 @@ func _on_whisk_sprite_button_up() -> void:
 func _physics_process(_delta: float) -> void:
 	if not is_moving:
 		return
-	velocity = get_global_mouse_position() - global_position
+	velocity = (get_global_mouse_position() - global_position) * 5
 	move_and_slide()

@@ -2,7 +2,7 @@ extends TextureButton
 class_name Towel
 
 
-@export var result_sprite: CanvasItem
+@export var result_sprite: NodePath
 
 @export var grabbed_texture: Texture2D
 

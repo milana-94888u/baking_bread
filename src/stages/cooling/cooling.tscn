@@ -86,7 +86,7 @@ texture_normal = ExtResource("12_iixgs")
 texture_click_mask = SubResource("BitMap_idd51")
 metadata/_edit_lock_ = true
 
-[node name="Towel" type="TextureButton" parent="." node_paths=PackedStringArray("result_sprite")]
+[node name="Towel" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 1026.0
 offset_top = 190.0

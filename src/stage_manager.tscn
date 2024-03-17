@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl71vey1mggjm"]
+[gd_scene load_steps=7 format=3 uid="uid://bl71vey1mggjm"]
 
 [ext_resource type="Script" path="res://src/stage_manager.gd" id="1_d2esg"]
 [ext_resource type="PackedScene" uid="uid://c77go5bf1c32r" path="res://src/stages/ingredient_preparation/ingredient_preparation.tscn" id="2_gtn38"]
@@ -16,4 +16,3 @@ main_menu = ExtResource("5_jfg8m")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_sphyn")
 autoplay = true
-bus = &"SFX"

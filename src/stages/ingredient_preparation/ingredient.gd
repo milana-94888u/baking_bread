@@ -1,13 +1,7 @@
 extends TextureButton
 class_name Ingredient
 
-enum Type {
-	POWDER,
-	WATER
-}
-
 @export var result_ingredient: NodePath
-@export var type: Type
 
 var waiting_flag := false
 

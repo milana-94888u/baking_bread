@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b7pg0eh3yc5i7"]
+[gd_scene load_steps=32 format=3 uid="uid://b7pg0eh3yc5i7"]
 
 [ext_resource type="Script" path="res://src/stages/kneading/kneading.gd" id="1_1lfdd"]
 [ext_resource type="Texture2D" uid="uid://rojiuivwb6q1" path="res://assets/sprites/background kitchen.png" id="2_3x3xm"]
@@ -12,6 +12,10 @@
 [ext_resource type="Script" path="res://src/stages/kneading/whisk.gd" id="10_ito7b"]
 [ext_resource type="Texture2D" uid="uid://rlifjl4bprwt" path="res://assets/sprites/bowl front.png" id="10_kujl4"]
 [ext_resource type="Texture2D" uid="uid://b30exbd53euf0" path="res://assets/sprites/dough out.png" id="10_risva"]
+[ext_resource type="AudioStream" uid="uid://bup8qc3q2q7ft" path="res://assets/sounds/kneading/mixing1.wav" id="13_8g74i"]
+[ext_resource type="AudioStream" uid="uid://dr1ptvxvynleh" path="res://assets/sounds/kneading/mixing2.wav" id="14_5amp3"]
+[ext_resource type="AudioStream" uid="uid://dk3ak8g7qt2jy" path="res://assets/sounds/kneading/mixing3.wav" id="15_skain"]
+[ext_resource type="AudioStream" uid="uid://bksc378lmfdcn" path="res://assets/sounds/kneading/mixing4.wav" id="16_lfb1v"]
 
 [sub_resource type="BitMap" id="BitMap_2tqfg"]
 data = {
@@ -80,16 +84,29 @@ normal = Vector2(-1, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktbl7"]
 size = Vector2(160, 200)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3a0on"]
+streams_count = 4
+stream_0/stream = ExtResource("13_8g74i")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("14_5amp3")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("15_skain")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("16_lfb1v")
+stream_3/weight = 1.0
+
 [node name="Kneading" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_1lfdd")
 
 [node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
 texture = ExtResource("2_3x3xm")
 metadata/_edit_lock_ = true
 
 [node name="BowlBack" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 460.0
 offset_top = 40.0
 offset_right = 460.0
@@ -184,6 +201,7 @@ polygon = PackedVector2Array(85, -300, 120, -299, 122, -284, 52, -60, 70, 45, 53
 metadata/_edit_lock_ = true
 
 [node name="BowlFront" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 460.0
 offset_top = 40.0
 offset_right = 460.0
@@ -238,6 +256,9 @@ position = Vector2(1280, 560)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeAreas/RightArea"]
 shape = SubResource("RectangleShape2D_ktbl7")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_3a0on")
 
 [connection signal="button_down" from="Whisk/WhiskSprite" to="Whisk" method="_on_whisk_sprite_button_down"]
 [connection signal="button_up" from="Whisk/WhiskSprite" to="Whisk" method="_on_whisk_sprite_button_up"]

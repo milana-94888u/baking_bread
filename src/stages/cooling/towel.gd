@@ -11,6 +11,7 @@ var waiting_flag := false
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	set_drag_preview(make_drag_preview())
+	$Touch.playing = true
 	hide()
 	waiting_flag = true
 	return self
@@ -32,4 +33,5 @@ func _notification(what: int) -> void:
 		return
 	if waiting_flag:
 		visible = !is_drag_successful()
+		$Touch.playing = true
 	waiting_flag = false

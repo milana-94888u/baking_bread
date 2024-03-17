@@ -1,17 +1,21 @@
 extends TextureButton
 class_name Ingredient
 
+enum Type {
+	POWDER,
+	WATER
+}
 
 @export var result_ingredient: NodePath
+@export var type: Type
 
 var waiting_flag := false
-
 
 func _ready() -> void:
 	print(result_ingredient)
 
-
 func _get_drag_data(_at_position: Vector2) -> Variant:
+	$Touch.playing = true
 	set_drag_preview(make_drag_preview())
 	hide()
 	waiting_flag = true
@@ -34,4 +38,8 @@ func _notification(what: int) -> void:
 		return
 	if waiting_flag:
 		visible = !is_drag_successful()
+		if is_drag_successful():
+			$Drop.playing = true
+		else:
+			$Touch.playing = true
 	waiting_flag = false

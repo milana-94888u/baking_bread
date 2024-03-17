@@ -6,7 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://csbveljgh6ac2" path="res://src/stages/cooling/cooling.tscn" id="4_mu6a1"]
 [ext_resource type="PackedScene" uid="uid://db1r7se5y308y" path="res://src/main_menu.tscn" id="5_jfg8m"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sphyn"]
+
 [node name="StageManager" type="Node"]
 script = ExtResource("1_d2esg")
 stages = Array[PackedScene]([ExtResource("2_gtn38"), ExtResource("3_28s32"), ExtResource("4_mu6a1")])
 main_menu = ExtResource("5_jfg8m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_sphyn")
+autoplay = true
+bus = &"SFX"

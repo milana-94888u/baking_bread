@@ -118,4 +118,7 @@ texture_normal = ExtResource("6_wylnl")
 texture_click_mask = SubResource("BitMap_fxxia")
 stretch_mode = 5
 
+[connection signal="pressed" from="Mash1" to="." method="_on_mash_1_pressed"]
+[connection signal="pressed" from="Mash2" to="." method="_on_mash_2_pressed"]
+[connection signal="pressed" from="Mash3" to="." method="_on_mash_3_pressed"]
 [connection signal="pressed" from="Out" to="." method="_on_out_pressed"]

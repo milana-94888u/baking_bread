@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://db1r7se5y308y"]
+[gd_scene load_steps=3 format=3 uid="uid://db1r7se5y308y"]
 
 [ext_resource type="Script" path="res://src/main_menu.gd" id="1_vxvnj"]
+[ext_resource type="Texture2D" uid="uid://rojiuivwb6q1" path="res://assets/sprites/background kitchen.png" id="2_7ykdq"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +11,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vxvnj")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_7ykdq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 visible = false

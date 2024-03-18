@@ -37,11 +37,6 @@ func start_game(starting_from := 0) -> void:
 	get_tree().change_scene_to_packed(stages[current_stage])
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().change_scene_to_packed(main_menu)
-
-
 func switch_to_next_stage() -> void:
 	current_stage += 1
 	if current_stage < stages.size():

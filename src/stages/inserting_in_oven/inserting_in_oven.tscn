@@ -25,6 +25,7 @@ texture = ExtResource("2_s7q6g")
 metadata/_edit_lock_ = true
 
 [node name="Shovel" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 400.0
 offset_top = 410.0
 offset_right = 991.0

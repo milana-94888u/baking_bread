@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://csbveljgh6ac2"]
+[gd_scene load_steps=27 format=3 uid="uid://csbveljgh6ac2"]
 
 [ext_resource type="Script" path="res://src/stages/cooling/cooling.gd" id="1_wyo8h"]
 [ext_resource type="Texture2D" uid="uid://rojiuivwb6q1" path="res://assets/sprites/background kitchen.png" id="2_3bjf2"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b1lbuch21vc71" path="res://assets/sprites/timer front.png" id="14_8woec"]
 [ext_resource type="AudioStream" uid="uid://u1tdjabiukxg" path="res://assets/sounds/clock_tick.wav" id="16_588y3"]
 [ext_resource type="AudioStream" uid="uid://fqy27axj5mue" path="res://assets/sounds/bell.wav" id="16_u5les"]
+[ext_resource type="Texture2D" uid="uid://be1kmr1tv7k6b" path="res://assets/sprites/dough raised.png" id="19_58yen"]
 
 [sub_resource type="BitMap" id="BitMap_nyajw"]
 data = {
@@ -108,6 +109,7 @@ metadata/_edit_lock_ = true
 
 [node name="Towel" type="TextureButton" parent="."]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 1026.0
 offset_top = 190.0
 offset_right = 2026.0
@@ -165,6 +167,7 @@ metadata/_edit_lock_ = true
 
 [node name="ClockArrow" type="Sprite2D" parent="Clock"]
 position = Vector2(502, 502)
+rotation = 1.5708
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("14_8woec")
 metadata/_edit_lock_ = true
@@ -176,4 +179,13 @@ bus = &"SFX"
 [node name="Bell" type="AudioStreamPlayer" parent="Clock"]
 stream = SubResource("AudioStreamRandomizer_6b2e3")
 
+[node name="Timer" type="Timer" parent="Clock"]
+
+[node name="DoughRaised" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("19_58yen")
+
 [connection signal="dragged" from="Towel" to="." method="_on_towel_dragged"]
+[connection signal="completed" from="DoughWithTowel" to="." method="_on_dough_with_towel_completed"]
+[connection signal="timeout" from="Clock/Timer" to="Clock" method="tick"]

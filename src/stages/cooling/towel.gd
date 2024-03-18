@@ -2,6 +2,8 @@ extends TextureButton
 class_name Towel
 signal dragged
 
+var finished_flag := false
+
 @export var result_sprite: NodePath
 
 @export var grabbed_texture: Texture2D
@@ -9,6 +11,8 @@ signal dragged
 var waiting_flag := false
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
+	if finished_flag:
+		return null
 	set_drag_preview(make_drag_preview())
 	$Touch.playing = true
 	hide()

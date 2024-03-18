@@ -1,5 +1,7 @@
 extends Sprite2D
 
+signal completed
+
 var allow_to_interact: bool = false
 
 func allow_interact() -> void:
@@ -14,5 +16,6 @@ func _input(event):
 		# Change the color of the Sprite2D as an example reaction.
 		# This assumes the Sprite2D has a modulate property.
 		%Towel.show()
+		(%Towel as Towel).finished_flag = true
 		self.hide()
-		get_parent().completed.emit()
+		completed.emit()

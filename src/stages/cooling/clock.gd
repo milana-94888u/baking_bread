@@ -1,30 +1,19 @@
 extends Control
 
-# Assuming full progress (100%) corresponds to one full rotation (360 degrees)
-const FULL_ROTATION_DEGREES = 360.0
+signal timeout
 
-var progress = 0.0 # Progress percentage, from 0.0 to 1.0
+@onready var arrow := $ClockArrow as Sprite2D
 
-func tick(step: float) -> void:
-	progress += step
+func tick() -> void:
 	$Tick.playing = true
 
 func bell() -> void:
 	$Bell.playing = true
+	timeout.emit()
 
 func wait(seconds: float, progress_step = 0.1, pause_step = 0.5) -> void:
-	while seconds - pause_step >= 0:
-		self.tick(progress_step)
-		seconds -= pause_step
-		await get_tree().create_timer(pause_step).timeout 
-	
-	progress += progress_step
-	self.bell()
- 
-func _process(delta) -> void:
-	if progress > 1.0:
-		progress -= 1.0 
-
-	var arrow_rotation_degrees = FULL_ROTATION_DEGREES * progress
-	$ClockArrow.rotation_degrees = arrow_rotation_degrees
-
+	($Timer as Timer).start(pause_step)
+	var tween := create_tween()
+	tween.tween_property(arrow, "rotation_degrees", 0.0, seconds).from(90)
+	tween.tween_callback(($Timer as Timer).stop)
+	tween.tween_callback(bell)

@@ -12,7 +12,7 @@
 
 [node name="StageManager" type="Node"]
 script = ExtResource("1_d2esg")
-stages = Array[PackedScene]([ExtResource("2_gtn38"), ExtResource("3_28s32"), ExtResource("4_ljqil"), ExtResource("4_4hull"), ExtResource("4_mu6a1")])
+stages = Array[PackedScene]([ExtResource("2_gtn38"), ExtResource("3_28s32"), ExtResource("4_mu6a1"), ExtResource("4_ljqil"), ExtResource("4_4hull")])
 main_menu = ExtResource("5_jfg8m")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

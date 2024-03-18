@@ -1,4 +1,3 @@
-@tool
 extends StageBase
 
 
@@ -37,6 +36,7 @@ func _on_bellow_pressed() -> void:
 	var current_bellow_progress := find_current_bellow_progress()
 	if current_bellow_progress + 1 >= bellow_sprites.size():
 		return
+	$Whoosh.playing = true
 	current_bellow_progress += 1
 	heat += (bellow_sprites.size() - current_bellow_progress) / float(bellow_sprites.size()) * 0.25
 	bellow.texture_normal = bellow_sprites[current_bellow_progress]

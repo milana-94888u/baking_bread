@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cner4enmslxrf"
+path="res://.godot/imported/lo effor.ogg-999a2540e51169004336944baa5c575e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/lo effor.ogg"
+dest_files=["res://.godot/imported/lo effor.ogg-999a2540e51169004336944baa5c575e.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

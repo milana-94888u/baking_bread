@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dagppqus2p36p"
+path="res://.godot/imported/are you bready.ogg-ca28ae7111742257080e1ae37ce8d4a0.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/are you bready.ogg"
+dest_files=["res://.godot/imported/are you bready.ogg-ca28ae7111742257080e1ae37ce8d4a0.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2ujnhxyscrfq"]
+[gd_scene load_steps=11 format=3 uid="uid://d2ujnhxyscrfq"]
 
 [ext_resource type="Script" path="res://src/stages/notching/notching.gd" id="1_cka7j"]
 [ext_resource type="Texture2D" uid="uid://cn5uh2fmjbguy" path="res://assets/sprites/background with a tray.png" id="2_lgi20"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b30exbd53euf0" path="res://assets/sprites/dough out.png" id="5_81oeg"]
 [ext_resource type="Script" path="res://src/stages/notching/knife.gd" id="5_fcgqu"]
 [ext_resource type="Texture2D" uid="uid://csyl7qhc58vbx" path="res://assets/sprites/cut dough.png" id="5_l33qq"]
+[ext_resource type="AudioStream" uid="uid://dxavqktme4sk2" path="res://assets/sounds/notching.mp3" id="8_6450v"]
 
 [sub_resource type="BitMap" id="BitMap_k1kry"]
 data = {
@@ -84,5 +85,8 @@ offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_l33qq")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_6450v")
 
 [connection signal="cut" from="Dough" to="." method="_on_dough_cut"]

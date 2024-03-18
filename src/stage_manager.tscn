@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bl71vey1mggjm"]
+[gd_scene load_steps=15 format=3 uid="uid://bl71vey1mggjm"]
 
 [ext_resource type="Script" path="res://src/stage_manager.gd" id="1_d2esg"]
 [ext_resource type="PackedScene" uid="uid://c77go5bf1c32r" path="res://src/stages/ingredient_preparation/ingredient_preparation.tscn" id="2_gtn38"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://vob15tc4vo42" path="res://src/stages/picking_out_of_oven/picking_out_of_oven.tscn" id="8_pi00c"]
 [ext_resource type="PackedScene" uid="uid://d2ujnhxyscrfq" path="res://src/stages/notching/notching.tscn" id="9_3h3ix"]
 [ext_resource type="PackedScene" uid="uid://cxprl270djtpb" path="res://src/finish_scene.tscn" id="10_fhb2i"]
+[ext_resource type="AudioStream" uid="uid://cner4enmslxrf" path="res://assets/sounds/music/lo effor.ogg" id="12_mhokj"]
+[ext_resource type="AudioStream" uid="uid://dagppqus2p36p" path="res://assets/sounds/music/are you bready.ogg" id="13_he41d"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sphyn"]
 
@@ -23,3 +25,9 @@ finish_scene = ExtResource("10_fhb2i")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_sphyn")
 autoplay = true
+
+[node name="LoEffor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_mhokj")
+
+[node name="AreYouBready" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_he41d")

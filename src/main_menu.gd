@@ -9,3 +9,7 @@ func _ready() -> void:
 	for i in len(buttons):
 		buttons[i].text = str(i)
 		buttons[i].pressed.connect(StageManager.start_game.bind(i))
+
+
+func _on_start_button_pressed() -> void:
+	StageManager.start_game()

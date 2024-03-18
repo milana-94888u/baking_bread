@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmp586plgj1ro"]
+[gd_scene load_steps=11 format=3 uid="uid://dmp586plgj1ro"]
 
 [ext_resource type="Script" path="res://src/stages/baking/baking.gd" id="1_7pqqk"]
 [ext_resource type="Texture2D" uid="uid://bqxe386lpu1pd" path="res://assets/sprites/oven for billows.png" id="2_yr8a4"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dvgok5wwiltko" path="res://assets/sprites/billow 3.png" id="4_pkggb"]
 [ext_resource type="Texture2D" uid="uid://cb76xx7ehef6f" path="res://assets/sprites/air icon.png" id="5_57jnt"]
 [ext_resource type="Texture2D" uid="uid://b0nol77a1phia" path="res://assets/sprites/billow 4.png" id="5_r18pq"]
+[ext_resource type="AudioStream" uid="uid://d1a6kvgq63blb" path="res://assets/sounds/oven/whoosh.mp3" id="9_2ilpv"]
+[ext_resource type="AudioStream" uid="uid://c2vt8vnarsksi" path="res://assets/sounds/oven/fire.mp3" id="10_87fp3"]
 
 [node name="Baking" type="Control"]
 layout_mode = 3
@@ -37,8 +39,8 @@ position = Vector2(1236, 234)
 texture = ExtResource("4_0jfwg")
 
 [node name="AirIcon" type="Sprite2D" parent="HeatGraph"]
-position = Vector2(-228.814, 21.6628)
-rotation = -0.977384
+position = Vector2(85.3498, -86.4717)
+rotation = 0.314392
 texture = ExtResource("5_57jnt")
 
 [node name="RestoreTimer" type="Timer" parent="."]
@@ -51,8 +53,16 @@ offset_left = 1610.0
 offset_top = 160.0
 offset_right = 1690.0
 offset_bottom = 416.0
+value = 2.87
 fill_mode = 3
 show_percentage = false
+
+[node name="Whoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_2ilpv")
+
+[node name="Fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_87fp3")
+autoplay = true
 
 [connection signal="pressed" from="Bellow" to="." method="_on_bellow_pressed"]
 [connection signal="timeout" from="RestoreTimer" to="." method="_on_restore_timer_timeout"]

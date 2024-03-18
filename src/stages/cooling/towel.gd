@@ -1,6 +1,6 @@
 extends TextureButton
 class_name Towel
-
+signal dragged
 
 @export var result_sprite: NodePath
 
@@ -34,4 +34,6 @@ func _notification(what: int) -> void:
 	if waiting_flag:
 		visible = !is_drag_successful()
 		$Touch.playing = true
+		if is_drag_successful():
+			dragged.emit()
 	waiting_flag = false

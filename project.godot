@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Baking Bread"
+config/name="Adoughable bread"
 run/main_scene="res://src/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/image="res://assets/sprites/bread.png"
+config/icon="res://assets/icon.png"
 
 [autoload]
 

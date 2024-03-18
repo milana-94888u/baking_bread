@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpfwnpq0sem8l"]
+
+[ext_resource type="Texture2D" uid="uid://ikamg4bww7up" path="res://assets/sprites/heat graph.png" id="1_oa0he"]
+[ext_resource type="Texture2D" uid="uid://cb76xx7ehef6f" path="res://assets/sprites/air icon.png" id="2_y2eui"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="HeatGraph" type="Sprite2D" parent="."]
+texture = ExtResource("1_oa0he")
+
+[node name="AirIcon" type="Sprite2D" parent="HeatGraph"]
+position = Vector2(0, -100)
+texture = ExtResource("2_y2eui")
+
+[node name="RayCast2D" type="RayCast2D" parent="HeatGraph/AirIcon"]
+target_position = Vector2(0, 400)
+
+[node name="AirIcon2" type="Sprite2D" parent="HeatGraph"]
+position = Vector2(225, 25)
+rotation = 0.977384
+texture = ExtResource("2_y2eui")
+
+[node name="RayCast2D" type="RayCast2D" parent="HeatGraph/AirIcon2"]
+target_position = Vector2(0, 400)
+
+[node name="AirIcon3" type="Sprite2D" parent="HeatGraph"]
+position = Vector2(-232, 20)
+rotation = -0.977384
+texture = ExtResource("2_y2eui")
+
+[node name="RayCast2D" type="RayCast2D" parent="HeatGraph/AirIcon3"]
+target_position = Vector2(0, 400)
+
+[node name="Marker2D" type="Marker2D" parent="HeatGraph"]
+position = Vector2(0, 177)

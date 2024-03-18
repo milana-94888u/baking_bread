@@ -27,5 +27,5 @@ func switch_to_next_stage() -> void:
 	if current_stage < stages.size():
 		await get_tree().process_frame
 		await get_tree().physics_frame
-		await get_tree().create_timer(1).timeout 
+		await get_tree().create_timer(1.0).timeout
 		get_tree().change_scene_to_packed(stages[current_stage])

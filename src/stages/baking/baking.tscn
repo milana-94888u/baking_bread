@@ -1,6 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmp586plgj1ro"]
+[gd_scene load_steps=9 format=3 uid="uid://dmp586plgj1ro"]
 
-[ext_resource type="Script" path="res://src/stage_base.gd" id="1_wev3b"]
+[ext_resource type="Script" path="res://src/stages/baking/baking.gd" id="1_7pqqk"]
+[ext_resource type="Texture2D" uid="uid://bqxe386lpu1pd" path="res://assets/sprites/oven for billows.png" id="2_yr8a4"]
+[ext_resource type="Texture2D" uid="uid://dgk42wp1fsfm" path="res://assets/sprites/billow 1.png" id="3_d01gy"]
+[ext_resource type="Texture2D" uid="uid://2dqkj83e2c56" path="res://assets/sprites/billow 2.png" id="3_ee0et"]
+[ext_resource type="Texture2D" uid="uid://ikamg4bww7up" path="res://assets/sprites/heat graph.png" id="4_0jfwg"]
+[ext_resource type="Texture2D" uid="uid://dvgok5wwiltko" path="res://assets/sprites/billow 3.png" id="4_pkggb"]
+[ext_resource type="Texture2D" uid="uid://cb76xx7ehef6f" path="res://assets/sprites/air icon.png" id="5_57jnt"]
+[ext_resource type="Texture2D" uid="uid://b0nol77a1phia" path="res://assets/sprites/billow 4.png" id="5_r18pq"]
 
-[node name="Baking" type="Node2D"]
-script = ExtResource("1_wev3b")
+[node name="Baking" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7pqqk")
+bellow_sprites = Array[Texture2D]([ExtResource("3_d01gy"), ExtResource("3_ee0et"), ExtResource("4_pkggb"), ExtResource("5_r18pq")])
+heat = -1.0
+
+[node name="OvenForBellows" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_yr8a4")
+metadata/_edit_lock_ = true
+
+[node name="Bellow" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 162.0
+offset_right = 1274.0
+offset_bottom = 1162.0
+texture_normal = ExtResource("3_d01gy")
+flip_h = true
+
+[node name="HeatGraph" type="Sprite2D" parent="."]
+position = Vector2(1236, 234)
+texture = ExtResource("4_0jfwg")
+
+[node name="AirIcon" type="Sprite2D" parent="HeatGraph"]
+position = Vector2(-228.814, 21.6628)
+rotation = -0.977384
+texture = ExtResource("5_57jnt")
+
+[node name="RestoreTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 1610.0
+offset_top = 160.0
+offset_right = 1690.0
+offset_bottom = 416.0
+fill_mode = 3
+show_percentage = false
+
+[connection signal="pressed" from="Bellow" to="." method="_on_bellow_pressed"]
+[connection signal="timeout" from="RestoreTimer" to="." method="_on_restore_timer_timeout"]

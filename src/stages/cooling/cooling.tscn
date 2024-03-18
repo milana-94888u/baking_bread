@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://csbveljgh6ac2"]
+[gd_scene load_steps=26 format=3 uid="uid://csbveljgh6ac2"]
 
 [ext_resource type="Script" path="res://src/stages/cooling/cooling.gd" id="1_wyo8h"]
 [ext_resource type="Texture2D" uid="uid://rojiuivwb6q1" path="res://assets/sprites/background kitchen.png" id="2_3bjf2"]
@@ -6,12 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://d2a150lsjwy4s" path="res://assets/sprites/towel.png" id="6_fa2pj"]
 [ext_resource type="Script" path="res://src/stages/cooling/bowl.gd" id="6_t0k5h"]
 [ext_resource type="Script" path="res://src/stages/cooling/towel.gd" id="7_a1nvk"]
+[ext_resource type="Script" path="res://src/stages/cooling/towel_out.gd" id="7_x6sfv"]
 [ext_resource type="Texture2D" uid="uid://cvhokds14v4mj" path="res://assets/sprites/towel grabber.png" id="8_cqmb6"]
 [ext_resource type="Texture2D" uid="uid://b30exbd53euf0" path="res://assets/sprites/dough out.png" id="9_6ajsq"]
 [ext_resource type="Texture2D" uid="uid://cimypcc4anqmt" path="res://assets/sprites/dough with towel.png" id="9_q4pfl"]
 [ext_resource type="AudioStream" uid="uid://c4bwbme75x17c" path="res://assets/sounds/cooling/cloth_up.wav" id="10_qg444"]
 [ext_resource type="AudioStream" uid="uid://r0bf2w1r4dtj" path="res://assets/sounds/cooling/cloth_down.wav" id="11_4412s"]
 [ext_resource type="Texture2D" uid="uid://rlifjl4bprwt" path="res://assets/sprites/bowl front.png" id="12_iixgs"]
+[ext_resource type="Texture2D" uid="uid://cdgp3ekqoelwv" path="res://assets/sprites/timer back.png" id="13_gbp3e"]
+[ext_resource type="Script" path="res://src/stages/cooling/clock.gd" id="13_j7y58"]
+[ext_resource type="Texture2D" uid="uid://b1lbuch21vc71" path="res://assets/sprites/timer front.png" id="14_8woec"]
+[ext_resource type="AudioStream" uid="uid://u1tdjabiukxg" path="res://assets/sounds/clock_tick.wav" id="16_588y3"]
+[ext_resource type="AudioStream" uid="uid://fqy27axj5mue" path="res://assets/sounds/bell.wav" id="16_u5les"]
 
 [sub_resource type="BitMap" id="BitMap_nyajw"]
 data = {
@@ -42,6 +48,20 @@ stream_0/stream = ExtResource("10_qg444")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("11_4412s")
 stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tncdb"]
+random_pitch = 1.05
+random_volume_offset_db = 0.1
+streams_count = 1
+stream_0/stream = ExtResource("16_588y3")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6b2e3"]
+random_pitch = 1.05
+random_volume_offset_db = 0.1
+streams_count = 1
+stream_0/stream = ExtResource("16_u5les")
+stream_0/weight = 1.0
 
 [node name="Cooling" type="Control"]
 layout_mode = 3
@@ -87,7 +107,7 @@ texture_click_mask = SubResource("BitMap_idd51")
 metadata/_edit_lock_ = true
 
 [node name="Towel" type="TextureButton" parent="."]
-layout_mode = 0
+unique_name_in_owner = true
 offset_left = 1026.0
 offset_top = 190.0
 offset_right = 2026.0
@@ -105,3 +125,55 @@ stream = SubResource("AudioStreamRandomizer_g3yui")
 visible = false
 position = Vector2(960, 540)
 texture = ExtResource("9_q4pfl")
+script = ExtResource("7_x6sfv")
+
+[node name="Touch" type="AudioStreamPlayer" parent="DoughWithTowel"]
+stream = SubResource("AudioStreamRandomizer_g3yui")
+
+[node name="Clock" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = 421.0
+offset_right = 1028.0
+offset_bottom = 1421.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+script = ExtResource("13_j7y58")
+
+[node name="ClockFace" type="TextureRect" parent="Clock"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_gbp3e")
+metadata/_edit_lock_ = true
+
+[node name="ClockArrow" type="Sprite2D" parent="Clock"]
+position = Vector2(502, 502)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("14_8woec")
+metadata/_edit_lock_ = true
+
+[node name="Tick" type="AudioStreamPlayer" parent="Clock"]
+stream = SubResource("AudioStreamRandomizer_tncdb")
+bus = &"SFX"
+
+[node name="Bell" type="AudioStreamPlayer" parent="Clock"]
+stream = SubResource("AudioStreamRandomizer_6b2e3")
+
+[connection signal="dragged" from="Towel" to="." method="_on_towel_dragged"]

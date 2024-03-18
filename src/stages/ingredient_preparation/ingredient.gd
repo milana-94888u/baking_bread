@@ -5,9 +5,6 @@ class_name Ingredient
 
 var waiting_flag := false
 
-func _ready() -> void:
-	print(result_ingredient)
-
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	$Touch.playing = true
 	set_drag_preview(make_drag_preview())

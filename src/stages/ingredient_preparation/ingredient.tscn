@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhqoxec32u537"]
+[gd_scene load_steps=2 format=3 uid="uid://cfogcq4hvxy4i"]
 
 [ext_resource type="Script" path="res://src/stages/ingredient_preparation/ingredient.gd" id="1_kspbd"]
 

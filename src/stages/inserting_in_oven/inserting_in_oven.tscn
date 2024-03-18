@@ -50,6 +50,7 @@ offset_left = 1233.0
 offset_top = 7.0
 offset_right = 1920.0
 offset_bottom = 1087.0
+mouse_filter = 2
 texture = ExtResource("3_0ylq4")
 metadata/_edit_lock_ = true
 

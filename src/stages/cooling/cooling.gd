@@ -3,5 +3,5 @@ extends StageBase
 
 
 func _on_towel_dragged():
-	$Clock.wait(5.0)
-	
+	$Clock.wait(3.0)
+	$DoughWithTowel.allow_interact();

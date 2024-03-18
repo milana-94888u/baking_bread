@@ -8,7 +8,6 @@ signal dragged
 
 var waiting_flag := false
 
-
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	set_drag_preview(make_drag_preview())
 	$Touch.playing = true

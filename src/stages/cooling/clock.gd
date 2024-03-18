@@ -18,6 +18,7 @@ func wait(seconds: float, progress_step = 0.1, pause_step = 0.5) -> void:
 		seconds -= pause_step
 		await get_tree().create_timer(pause_step).timeout 
 	
+	progress += progress_step
 	self.bell()
  
 func _process(delta) -> void:

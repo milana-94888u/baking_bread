@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://csbveljgh6ac2"]
+[gd_scene load_steps=26 format=3 uid="uid://csbveljgh6ac2"]
 
 [ext_resource type="Script" path="res://src/stages/cooling/cooling.gd" id="1_wyo8h"]
 [ext_resource type="Texture2D" uid="uid://rojiuivwb6q1" path="res://assets/sprites/background kitchen.png" id="2_3bjf2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d2a150lsjwy4s" path="res://assets/sprites/towel.png" id="6_fa2pj"]
 [ext_resource type="Script" path="res://src/stages/cooling/bowl.gd" id="6_t0k5h"]
 [ext_resource type="Script" path="res://src/stages/cooling/towel.gd" id="7_a1nvk"]
+[ext_resource type="Script" path="res://src/stages/cooling/towel_out.gd" id="7_x6sfv"]
 [ext_resource type="Texture2D" uid="uid://cvhokds14v4mj" path="res://assets/sprites/towel grabber.png" id="8_cqmb6"]
 [ext_resource type="Texture2D" uid="uid://b30exbd53euf0" path="res://assets/sprites/dough out.png" id="9_6ajsq"]
 [ext_resource type="Texture2D" uid="uid://cimypcc4anqmt" path="res://assets/sprites/dough with towel.png" id="9_q4pfl"]
@@ -106,7 +107,7 @@ texture_click_mask = SubResource("BitMap_idd51")
 metadata/_edit_lock_ = true
 
 [node name="Towel" type="TextureButton" parent="."]
-layout_mode = 0
+unique_name_in_owner = true
 offset_left = 1026.0
 offset_top = 190.0
 offset_right = 2026.0
@@ -124,6 +125,10 @@ stream = SubResource("AudioStreamRandomizer_g3yui")
 visible = false
 position = Vector2(960, 540)
 texture = ExtResource("9_q4pfl")
+script = ExtResource("7_x6sfv")
+
+[node name="Touch" type="AudioStreamPlayer" parent="DoughWithTowel"]
+stream = SubResource("AudioStreamRandomizer_g3yui")
 
 [node name="Clock" type="Control" parent="."]
 clip_contents = true

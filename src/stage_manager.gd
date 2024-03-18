@@ -24,8 +24,8 @@ func switch_to_next_stage() -> void:
 	current_stage += 1
 	if current_stage < stages.size():
 		print("switching stage from %s [%d] to %s [%d]"
-	 	% [ stages[current_stage].resource_path, current_stage, 
-		stages[current_stage+1].resource_path, current_stage+1 ] )
+	 	% [ stages[current_stage - 1].resource_path, current_stage - 1, 
+		stages[current_stage].resource_path, current_stage] )
 		await get_tree().process_frame
 		await get_tree().physics_frame
 		await get_tree().create_timer(1.0).timeout
